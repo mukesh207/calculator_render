@@ -1,0 +1,15 @@
+{% if history %}
+    <div class="history-list">
+        {% for item in history %}
+        <div class="history-item">
+            <div class="history-expression">{{ item.expression }}</div>
+            <div class="history-result">= {{ item.result }}</div>
+            <div class="history-time">{{ item.created_at|date:"H:i:s" }}</div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="history-empty">
+        <p>No calculations yet</p>
+    </div>
+{% endif %}

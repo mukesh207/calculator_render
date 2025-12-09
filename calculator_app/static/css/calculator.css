@@ -1,0 +1,370 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-bg: #1a1a2e;
+    --secondary-bg: #16213e;
+    --accent-color: #0f3460;
+    --highlight-color: #e94560;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --btn-number: #2d3561;
+    --btn-operator: #0f3460;
+    --btn-equals: #e94560;
+    --btn-function: #1f4068;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.calculator-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Calculator Container */
+.calculator-container {
+    background: var(--secondary-bg);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
+.calculator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calculator-header h1 {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.history-toggle {
+    background: var(--btn-function);
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.history-toggle:hover {
+    background: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Display Area */
+.display-container {
+    background: var(--primary-bg);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.expression {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    text-align: right;
+    margin-bottom: 10px;
+    min-height: 25px;
+    word-wrap: break-word;
+}
+
+.display {
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: right;
+    word-wrap: break-word;
+}
+
+.display.error {
+    color: var(--highlight-color);
+    font-size: 2rem;
+}
+
+/* Calculator Grid */
+.calculator-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    background: var(--btn-number);
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-number {
+    background: var(--btn-number);
+}
+
+.btn-number:hover {
+    background: #3d4671;
+}
+
+.btn-operator {
+    background: var(--btn-operator);
+    font-weight: 600;
+}
+
+.btn-operator:hover {
+    background: #1a4a7a;
+}
+
+.btn-function {
+    background: var(--btn-function);
+}
+
+.btn-function:hover {
+    background: #2a5588;
+}
+
+.btn-equals {
+    background: var(--btn-equals);
+    font-weight: 700;
+}
+
+.btn-equals:hover {
+    background: #f5567a;
+}
+
+.btn-zero {
+    grid-column: span 2;
+}
+
+/* History Panel */
+.history-container {
+    background: var(--secondary-bg);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.history-header h2 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.btn-clear-history {
+    background: var(--highlight-color);
+    border: none;
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-clear-history:hover {
+    background: #f5567a;
+    transform: scale(1.05);
+}
+
+#history-panel {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.history-item {
+    background: var(--primary-bg);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 3px solid var(--highlight-color);
+    transition: all 0.2s ease;
+}
+
+.history-item:hover {
+    background: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.history-expression {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.history-result {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.history-time {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+.history-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}
+
+.history-empty p {
+    font-size: 1rem;
+}
+
+/* Scrollbar Styling */
+#history-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+#history-panel::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+    border-radius: 10px;
+}
+
+#history-panel::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+#history-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--highlight-color);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .calculator-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .history-container {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .calculator-container {
+        padding: 20px;
+    }
+    
+    .display {
+        font-size: 2rem;
+    }
+    
+    .expression {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 20px;
+        font-size: 1.3rem;
+    }
+    
+    .calculator-grid {
+        gap: 8px;
+    }
+    
+    .history-container {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .btn {
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+    
+    .display {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animation for button press */
+@keyframes buttonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.btn:active {
+    animation: buttonPress 0.1s ease;
+}
+
+/* Loading indicator for HTMX */
+.htmx-request .htmx-indicator {
+    display: inline-block;
+}
+
+.htmx-indicator {
+    display: none;
+}
